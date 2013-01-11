@@ -1,0 +1,27 @@
+package net.minecraft.src;
+
+import java.util.Iterator;
+import java.util.List;
+
+public class SandWormEntity extends EntityMob{
+
+	public double targetX;
+    public double targetY;
+    public double targetZ;
+	
+	public SandWormEntity(World par1World) {
+		super(par1World);
+		this.setEntityHealth(this.getMaxHealth());
+		this.texture = "/mob/enderdragon/ender.png";
+		this.setSize(16.0F, 8.0F);
+		this.noClip = true;
+		this.isImmuneToFire = true;
+		this.targetY = 100.0D;
+		this.ignoreFrustumCheck = true;
+	}
+
+	public int getMaxHealth() {
+		return 200000;
+	}
+	
+}

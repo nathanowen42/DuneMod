@@ -1,0 +1,83 @@
+package net.minecraft.src;
+
+public class SandWormSegment extends EntityLiving{
+
+	SandWormEntity head;
+    double segmentDist;
+    int attackStrength;
+    int deathCounter;
+	
+	public SandWormSegment(World var1)
+    {
+        super(var1);
+        this.segmentDist = 5.5D;
+        this.texture = "/DuneMod/SandWormSegment.png";
+        this.setSize(1.75F, 1.95F);
+        this.stepHeight = 2.0F;
+        this.health = 1000;
+        this.isImmuneToFire = true;
+        this.attackStrength = 3;
+    }
+	
+	public SandWormSegment(World var1, double var2, double var4, double var6)
+    {
+        this(var1);
+        this.setPosition(var2, var4, var6);
+    }
+
+    public SandWormSegment(World var1, SandWormEntity var2, int var3)
+    {
+        this(var1);
+        this.head = var2;
+        this.setSegment(var3);
+        this.moveSpeed = var2.getAIMoveSpeed() * 1.5F;
+        this.landMovementFactor = var2.landMovementFactor;
+        this.jumpMovementFactor = var2.jumpMovementFactor;
+    }
+    
+    public void pullTowards(Entity var1)
+    {
+        this.moveSpeed = this.head.getAIMoveSpeed() * 1.5F;
+        float var2 = (float)Math.atan2(this.posZ - var1.posZ, this.posX - var1.posX);
+        double var3 = var1.posX + (double)MathHelper.cos(var2) * this.segmentDist;
+        double var5 = var1.posZ + (double)MathHelper.sin(var2) * this.segmentDist;
+        double var7 = var3 - this.posX;
+        double var9 = var1.posY - this.posY;
+        double var11 = var5 - this.posZ;
+        double var13 = (double)MathHelper.sqrt_double(var7 * var7 + var11 * var11);
+
+        if (var13 > this.segmentDist * 4.0D)
+        {
+            this.setPositionAndRotation(var3, var1.posY + 0.001D, var5, 0.0F, (float)((double)(var2 * 180.0F) / Math.PI) - 90.0F);
+            var9 = 0.0D;
+            this.faceEntity(var1, 90.0F, 90.0F);
+            this.moveForward = (float)((double)this.moveSpeed * var13 * 5.0D);
+        }
+        else if (var13 > 0.0D)
+        {
+            this.faceEntity(var1, 90.0F, 90.0F);
+            this.moveForward = this.head.getAIMoveSpeed();
+        }
+
+        if (var9 > 1.1D)
+        {
+            this.jump();
+        }
+    }
+
+    public void setSegment(int var1)
+    {
+        this.dataWatcher.updateObject(16, new Byte((byte)var1));
+    }
+
+    protected void entityInit()
+    {
+        super.entityInit();
+        this.dataWatcher.addObject(16, new Byte((byte)1));
+    }
+    
+	public int getMaxHealth() {
+		return 1000;
+	}
+
+}

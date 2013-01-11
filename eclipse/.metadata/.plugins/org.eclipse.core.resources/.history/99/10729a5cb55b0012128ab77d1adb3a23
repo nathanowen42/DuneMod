@@ -1,0 +1,36 @@
+package net.minecraft.src;
+
+import java.util.Iterator;
+import java.util.List;
+
+public class SandWormEntity extends EntityMob{
+	
+	 	public double targetX;
+	    public double targetY;
+	    public double targetZ;
+
+	    SandWormEntity head;
+	    double sDist;
+	    int attackStrength;
+	    int deathCounter;
+
+	    public SandWormEntity(World var1)
+	    {
+	        super(var1);
+	        this.sDist = 1.5D;
+	        this.texture = "/twilightforest/nagasegment.png";
+	        this.setSize(1.75F, 1.95F);
+	        this.stepHeight = 2.0F;
+	        this.health = 1000;
+	        this.isImmuneToFire = true;
+	        this.attackStrength = 3;
+	        this.noClip = true;  //we will add a noClipSand function later
+	    }
+
+	    public int getMaxHealth()
+	    {
+	        return 20000;
+	    }
+	
+	
+}

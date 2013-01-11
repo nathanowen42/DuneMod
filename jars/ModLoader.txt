@@ -1,12 +1,12 @@
-Jan 04, 2013 7:25:45 PM net.minecraft.src.ModLoader init
+Jan 10, 2013 10:25:59 PM net.minecraft.src.ModLoader init
 FINE: ModLoader 1.4.6 Initializing...
-Jan 04, 2013 7:25:45 PM net.minecraft.src.ModLoader readFromClassPath
-FINER: Adding mods from D:\Users\Nathan\Desktop\New\eclipse\Client\bin
-Jan 04, 2013 7:25:45 PM net.minecraft.src.ModLoader readFromClassPath
+Jan 10, 2013 10:25:59 PM net.minecraft.src.ModLoader readFromClassPath
+FINER: Adding mods from D:\Users\Nathan\git\DuneMod\eclipse\Client\bin
+Jan 10, 2013 10:25:59 PM net.minecraft.src.ModLoader readFromClassPath
 FINER: Directory found.
-Jan 04, 2013 7:25:45 PM net.minecraft.src.ModLoader addMod
+Jan 10, 2013 10:25:59 PM net.minecraft.src.ModLoader addMod
 FINE: Mod Initialized: "mod_DuneMod DuneCraft 0.24 for Minecraft 1.3.1" from mod_DuneMod.class
-Jan 04, 2013 7:25:45 PM net.minecraft.src.ModLoader init
+Jan 10, 2013 10:25:59 PM net.minecraft.src.ModLoader init
 FINE: Mod Loaded: "mod_DuneMod DuneCraft 0.24 for Minecraft 1.3.1"
-Jan 04, 2013 7:25:45 PM net.minecraft.src.ModLoader addAllRenderers
+Jan 10, 2013 10:26:00 PM net.minecraft.src.ModLoader addAllRenderers
 FINE: Initialized

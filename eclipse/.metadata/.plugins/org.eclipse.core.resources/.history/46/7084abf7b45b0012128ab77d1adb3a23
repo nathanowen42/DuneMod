@@ -1,0 +1,223 @@
+package net.minecraft.src;
+
+
+
+public class SandWormSegment extends Entity{
+	SandWormEntity head;
+    double sDist;
+    int attackStrength;
+    int deathCounter;
+
+    public SandWormSegment(World var1)
+    {
+        super(var1);
+        this.sDist = 1.5D;
+        this.texture = "/twilightforest/nagasegment.png";
+        this.setSize(1.75F, 1.95F);
+        this.stepHeight = 2.0F;
+        this.health = 1000;
+        this.isImmuneToFire = true;
+        this.attackStrength = 3;
+    }
+
+    public SandWormSegment(World var1, double var2, double var4, double var6)
+    {
+        this(var1);
+        this.setPosition(var2, var4, var6);
+    }
+
+    public SandWormSegment(World var1, SandWormEntity var2, int var3)
+    {
+        this(var1);
+        this.head = var2;
+        this.setSegment(var3);
+        this.moveSpeed = var2.getMoveSpeed() * 1.5F;
+        this.landMovementFactor = var2.landMovementFactor;
+        this.jumpMovementFactor = var2.jumpMovementFactor;
+    }
+
+    public void setSegment(int var1)
+    {
+        this.dataWatcher.updateObject(16, new Byte((byte)var1));
+    }
+
+    public int getSegment()
+    {
+        return this.dataWatcher.getWatchableObjectByte(16);
+    }
+
+    protected void entityInit()
+    {
+        super.entityInit();
+        this.dataWatcher.addObject(16, new Byte((byte)1));
+    }
+
+    /**
+     * Returns true if this entity should push and be pushed by other entities when colliding.
+     */
+    public boolean canBePushed()
+    {
+        return true;
+    }
+
+    /**
+     * knocks back this entity
+     */
+    public void knockBack(Entity var1, int var2, double var3, double var5) {}
+
+    /**
+     * Called when the mob is falling. Calculates and applies fall damage.
+     */
+    protected void fall(float var1) {}
+
+    /**
+     * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
+     * prevent them from trampling crops
+     */
+    public boolean canTriggerWalking()
+    {
+        return false;
+    }
+
+    /**
+     * Whether or not the current entity is in lava
+     */
+    public boolean handleLavaMovement()
+    {
+        return false;
+    }
+
+    /**
+     * Called to update the entity's position/logic.
+     */
+    public void onUpdate()
+    {
+        this.despawnIfInvalid();
+
+        if (this.deathCounter > 0)
+        {
+            --this.deathCounter;
+
+            if (this.deathCounter == 0)
+            {
+                for (int var1 = 0; var1 < 20; ++var1)
+                {
+                    double var2 = this.rand.nextGaussian() * 0.02D;
+                    double var4 = this.rand.nextGaussian() * 0.02D;
+                    double var6 = this.rand.nextGaussian() * 0.02D;
+                    String var8 = this.rand.nextBoolean() ? "largeexplode" : "explode";
+                    this.worldObj.spawnParticle(var8, this.posX + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, this.posY + (double)(this.rand.nextFloat() * this.height), this.posZ + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, var2, var4, var6);
+                }
+
+                this.setDead();
+            }
+        }
+
+        super.onUpdate();
+    }
+
+    protected void updateEntityActionState()
+    {
+        if (this.head != null && this.head.attackTime <= 0)
+        {
+            List var1 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(0.75D, 0.75D, 0.75D));
+
+            for (int var2 = 0; var2 < var1.size(); ++var2)
+            {
+                Entity var3 = (Entity)var1.get(var2);
+
+                if (var3 instanceof EntityLiving && !(var3 instanceof SandWormEntity) && !(var3 instanceof SandWormSegment))
+                {
+                    this.head.attackTime = 10;
+                    this.attackEntityAsMob(var3);
+                }
+            }
+        }
+    }
+
+    public boolean attackEntityAsMob(Entity var1)
+    {
+        return var1 instanceof EntityAnimal ? var1.attackEntityFrom(DamageSource.causeMobDamage(this), this.attackStrength * 3) : var1.attackEntityFrom(DamageSource.causeMobDamage(this), this.attackStrength);
+    }
+
+    /**
+     * Called when the entity is attacked.
+     */
+    public boolean attackEntityFrom(DamageSource var1, int var2)
+    {
+        if (var1 != DamageSource.explosion && var1 != DamageSource.inFire && var1 != DamageSource.onFire && var1 != DamageSource.lava)
+        {
+            if (!this.worldObj.isRemote && this.deathCounter <= 0 && this.head != null)
+            {
+                this.hurtTime = this.maxHurtTime = 10;
+                return this.head.attackEntityFrom(var1, Math.round((float)var2 * 2.0F / 3.0F));
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            this.hurtTime = 0;
+            return false;
+        }
+    }
+
+    public void despawnIfInvalid()
+    {
+        if (!this.worldObj.isRemote)
+        {
+            if (this.head == null || this.head.isDead)
+            {
+                this.setDead();
+            }
+
+            if (this.worldObj.difficultySetting == 0)
+            {
+                this.setDead();
+            }
+        }
+    }
+
+    public void pullTowards(Entity var1)
+    {
+        this.moveSpeed = this.head.getMoveSpeed() * 1.5F;
+        float var2 = (float)Math.atan2(this.posZ - var1.posZ, this.posX - var1.posX);
+        double var3 = var1.posX + (double)MathHelper.cos(var2) * this.sDist;
+        double var5 = var1.posZ + (double)MathHelper.sin(var2) * this.sDist;
+        double var7 = var3 - this.posX;
+        double var9 = var1.posY - this.posY;
+        double var11 = var5 - this.posZ;
+        double var13 = (double)MathHelper.sqrt_double(var7 * var7 + var11 * var11);
+
+        if (var13 > this.sDist * 4.0D)
+        {
+            this.setPositionAndRotation(var3, var1.posY + 0.001D, var5, 0.0F, (float)((double)(var2 * 180.0F) / Math.PI) - 90.0F);
+            var9 = 0.0D;
+            this.faceEntity(var1, 90.0F, 90.0F);
+            this.moveForward = (float)((double)this.moveSpeed * var13 * 5.0D);
+        }
+        else if (var13 > 0.0D)
+        {
+            this.faceEntity(var1, 90.0F, 90.0F);
+            this.moveForward = this.head.getMoveSpeed();
+        }
+
+        if (var9 > 1.1D)
+        {
+            this.jump();
+        }
+    }
+
+    public void selfDestruct()
+    {
+        this.hurtTime = this.maxHurtTime = 30;
+        this.deathCounter = 30;
+    }
+
+    public int getMaxHealth()
+    {
+        return 250;
+    }
+}

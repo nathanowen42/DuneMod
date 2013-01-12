@@ -58,8 +58,8 @@ public class WorldType
      */
     public String getTranslateName()
     {
-    	//return "generator." + this.worldType;
-    	return this.worldType;  //modified for dune mod so that it does not display .generate before world name
+        //return "generator." + this.worldType;
+        return this.worldType;  //modified for dune mod so that it does not display .generate before world name
     }
 
     /**

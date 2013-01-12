@@ -33,6 +33,6 @@ public class BiomeGenDune extends BiomeGenBase
     }
     public int getSkyColorByTemp(float par1)
     {
-    	return java.awt.Color.getHSBColor(2.095F, .607F, 1F).getRGB();
+        return java.awt.Color.getHSBColor(2.095F, .607F, 1F).getRGB();
     }
 }

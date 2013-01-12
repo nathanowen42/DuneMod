@@ -138,7 +138,7 @@ abstract class ComponentVillageDune extends StructureComponent
     {
         if (this.field_74897_k.field_74927_b)
         {
-        	if (par1 == Block.wood.blockID)
+            if (par1 == Block.wood.blockID)
             {
                 return Block.netherBrick.blockID;
             }
@@ -167,14 +167,17 @@ abstract class ComponentVillageDune extends StructureComponent
             {
                 return Block.netherBrick.blockID;
             }
+
             if (par1 == Block.waterMoving.blockID)
             {
                 return Block.sand.blockID;
             }
+
             if (par1 == Block.fence.blockID)
             {
                 return Block.netherFence.blockID;
             }
+
             if (par1 == Block.dirt.blockID)
             {
                 return Block.netherBrick.blockID;

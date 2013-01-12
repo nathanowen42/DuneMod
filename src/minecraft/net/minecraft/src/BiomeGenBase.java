@@ -46,9 +46,9 @@ public abstract class BiomeGenBase
     /** Jungle biome identifier */
     public static final BiomeGenBase jungle = (new BiomeGenJungle(21)).setColor(5470985).setBiomeName("Jungle").func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.2F, 0.4F);
     public static final BiomeGenBase jungleHills = (new BiomeGenJungle(22)).setColor(2900485).setBiomeName("JungleHills").func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(1.8F, 0.5F);
-    
+
     public static final BiomeGenBase dune = (new BiomeGenDune(23)).setColor(0xfa9418).setBiomeName("Dune").setBiomeName("Desert").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.1F, 0.2F);
-    
+
     public String biomeName;
     public int color;
 

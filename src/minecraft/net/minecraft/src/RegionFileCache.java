@@ -44,6 +44,7 @@ public class RegionFileCache
     /**
      * Saves the current Chunk Map Cache
      */
+
     public static synchronized void clearRegionFileReferences()
     {
         Iterator var0 = regionsByFilename.values().iterator();

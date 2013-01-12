@@ -38,6 +38,7 @@ public abstract class RConThreadBase implements Runnable
     /**
      * Creates a new Thread object from this class and starts running
      */
+
     public synchronized void startThread()
     {
         this.rconThread = new Thread(this);

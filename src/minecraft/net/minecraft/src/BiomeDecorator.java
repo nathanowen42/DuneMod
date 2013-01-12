@@ -162,12 +162,16 @@ public class BiomeDecorator
         this.sandPerChunk2 = 3;
         this.clayPerChunk = 1;
         this.bigMushroomsPerChunk = 0;
-        if(!(par1BiomeGenBase instanceof BiomeGenDune)){
-        	this.generateLakes = true;
+
+        if (!(par1BiomeGenBase instanceof BiomeGenDune))
+        {
+            this.generateLakes = true;
         }
-        else{
-        	this.generateLakes = false;  //changed for dune mod
+        else
+        {
+            this.generateLakes = false;  //changed for dune mod
         }
+
         this.biome = par1BiomeGenBase;
     }
 

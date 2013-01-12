@@ -5,9 +5,9 @@ import java.util.Random;
 
 public class ComponentVillageDuneHouse2 extends ComponentVillageDune
 {
-	private static final WeightedRandomChestContent[] villageBlacksmithChestContents = new WeightedRandomChestContent[] {new WeightedRandomChestContent(Item.diamond.itemID, 0, 1, 3, 3), new WeightedRandomChestContent(Item.ingotIron.itemID, 0, 1, 5, 10), new WeightedRandomChestContent(Item.ingotGold.itemID, 0, 1, 3, 5), new WeightedRandomChestContent(Item.bread.itemID, 0, 1, 3, 15), new WeightedRandomChestContent(Item.appleRed.itemID, 0, 1, 3, 15), new WeightedRandomChestContent(Item.pickaxeSteel.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.swordSteel.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.plateSteel.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.helmetSteel.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.legsSteel.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.bootsSteel.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Block.obsidian.blockID, 0, 3, 7, 5), new WeightedRandomChestContent(Block.sapling.blockID, 0, 3, 7, 5)};
-	private int averageGroundLevel = -1;
-	private boolean hasMadeChest;
+    private static final WeightedRandomChestContent[] villageBlacksmithChestContents = new WeightedRandomChestContent[] {new WeightedRandomChestContent(Item.diamond.itemID, 0, 1, 3, 3), new WeightedRandomChestContent(Item.ingotIron.itemID, 0, 1, 5, 10), new WeightedRandomChestContent(Item.ingotGold.itemID, 0, 1, 3, 5), new WeightedRandomChestContent(Item.bread.itemID, 0, 1, 3, 15), new WeightedRandomChestContent(Item.appleRed.itemID, 0, 1, 3, 15), new WeightedRandomChestContent(Item.pickaxeSteel.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.swordSteel.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.plateSteel.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.helmetSteel.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.legsSteel.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Item.bootsSteel.itemID, 0, 1, 1, 5), new WeightedRandomChestContent(Block.obsidian.blockID, 0, 3, 7, 5), new WeightedRandomChestContent(Block.sapling.blockID, 0, 3, 7, 5)};
+    private int averageGroundLevel = -1;
+    private boolean hasMadeChest;
 
     public ComponentVillageDuneHouse2(ComponentVillageStartPieceDune par1ComponentVillageStartPieceDune, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5)
     {

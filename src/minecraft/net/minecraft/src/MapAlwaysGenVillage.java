@@ -34,7 +34,7 @@ public class MapAlwaysGenVillage extends MapGenStructure
             par2 -= var3 - 1;
         }
 
-        if (par1%375 == 0 && par2%375 == 0)
+        if (par1 % 375 == 0 && par2 % 375 == 0)
         {
             boolean var10 = this.worldObj.getWorldChunkManager().areBiomesViable(var5 * 16 + 8, var6 * 16 + 8, 0, villageSpawnBiomes);
 

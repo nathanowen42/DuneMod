@@ -103,20 +103,20 @@ public class DuneChunkProvider implements IChunkProvider
             {
                 for (int l = 0; l < i; l++)
                 {
-                	int x = (par1*16)+j;
-                	int y = (par2*16)+k;
-                	double height = Math.round(Math.sin(x*0.05-Math.sin(y*.02)*5)*Math.sin(x*.05)*8+100);
+                    int x = (par1 * 16) + j;
+                    int y = (par2 * 16) + k;
+                    double height = Math.round(Math.sin(x * 0.05 - Math.sin(y * .02) * 5) * Math.sin(x * .05) * 8 + 100);
                     int i1 = 0;
 
                     if (l == 0)
                     {
                         i1 = Block.bedrock.blockID;
                     }
-                    else if (l <= ((int)height-45))
+                    else if (l <= ((int)height - 45))
                     {
                         i1 = Block.stone.blockID;
                     }
-                    else if (l <= ((int)height-40))
+                    else if (l <= ((int)height - 40))
                     {
                         i1 = Block.sandStone.blockID;
                     }
@@ -254,7 +254,6 @@ public class DuneChunkProvider implements IChunkProvider
         }
 
         Chunk var4 = new Chunk(this.worldObj, var3, par1, par2);
-        
         /*
         byte[] var5 = var4.getBiomeArray();
 
@@ -262,19 +261,17 @@ public class DuneChunkProvider implements IChunkProvider
         {
             var5[var6] = (byte)this.biomesForGeneration[var6].biomeID;
         }
-        
-        */
 
+        */
         var4.generateSkylightMap();
         return var4;
-        
     }
 
     /**
      * generates a subset of the level's terrain data. Takes 7 arguments: the [empty] noise array, the position, and the
      * size.
      */
-    
+
     /*
     private double[] initializeNoiseField(double[] par1ArrayOfDouble, int par2, int par3, int par4, int par5, int par6, int par7)
     {
@@ -422,7 +419,7 @@ public class DuneChunkProvider implements IChunkProvider
 
         return par1ArrayOfDouble;
     }
-    
+
     */
 
     /**
@@ -459,7 +456,7 @@ public class DuneChunkProvider implements IChunkProvider
         int var12;
         int var13;
         int var14;
-        
+
         /*
         if (!var11 && this.rand.nextInt(4) == 0)
         {

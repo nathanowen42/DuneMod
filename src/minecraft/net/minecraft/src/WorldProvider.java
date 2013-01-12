@@ -148,61 +148,62 @@ public abstract class WorldProvider
      */
     public Vec3 getFogColor(float par1, float par2)
     {
-    	String worldID2 = "";
-    	try{
-        	String aaab = terrainType.getChunkGenerator(worldObj, this.field_82913_c).toString();  //might not work (testing)
-        	worldID2 = aaab.substring(18,22);
+        String worldID2 = "";
+
+        try
+        {
+            String aaab = terrainType.getChunkGenerator(worldObj, this.field_82913_c).toString();  //might not work (testing)
+            worldID2 = aaab.substring(18, 22);
         }
-        catch(Exception t){
-        	
-        	float var3 = MathHelper.cos(par1 * (float)Math.PI * 2.0F) * 2.0F + 0.5F;
-        	
-	        if (var3 < 0.0F)
-	        {
-	            var3 = 0.0F;
-	        }
-	
-	        if (var3 > 1.0F)
-	        {
-	            var3 = 1.0F;
-	        }
-	
-	        float var4 = 0.7529412F;
-	        float var5 = 0.84705883F;
-	        float var6 = 1.0F;
-	        var4 *= var3 * 0.94F + 0.06F;
-	        var5 *= var3 * 0.94F + 0.06F;
-	        var6 *= var3 * 0.91F + 0.09F;
-	        return this.worldObj.getWorldVec3Pool().getVecFromPool((double)var4, (double)var5, (double)var6);
-        	
+        catch (Exception t)
+        {
+            float var3 = MathHelper.cos(par1 * (float)Math.PI * 2.0F) * 2.0F + 0.5F;
+
+            if (var3 < 0.0F)
+            {
+                var3 = 0.0F;
+            }
+
+            if (var3 > 1.0F)
+            {
+                var3 = 1.0F;
+            }
+
+            float var4 = 0.7529412F;
+            float var5 = 0.84705883F;
+            float var6 = 1.0F;
+            var4 *= var3 * 0.94F + 0.06F;
+            var5 *= var3 * 0.94F + 0.06F;
+            var6 *= var3 * 0.91F + 0.09F;
+            return this.worldObj.getWorldVec3Pool().getVecFromPool((double)var4, (double)var5, (double)var6);
         }
-    		
-    	if(!(worldID2.equals("Dune"))){
-    		
-	        float var3 = MathHelper.cos(par1 * (float)Math.PI * 2.0F) * 2.0F + 0.5F;
-	
-	        if (var3 < 0.0F)
-	        {
-	            var3 = 0.0F;
-	        }
-	
-	        if (var3 > 1.0F)
-	        {
-	            var3 = 1.0F;
-	        }
-	
-	        float var4 = 0.7529412F;
-	        float var5 = 0.84705883F;
-	        float var6 = 1.0F;
-	        var4 *= var3 * 0.94F + 0.06F;
-	        var5 *= var3 * 0.94F + 0.06F;
-	        var6 *= var3 * 0.91F + 0.09F;
-	        return this.worldObj.getWorldVec3Pool().getVecFromPool((double)var4, (double)var5, (double)var6);
-    	}
-    	else{
-    		return this.worldObj.getWorldVec3Pool().getVecFromPool(5.095F, .607F, .5F);
-    	}
-    	
+
+        if (!(worldID2.equals("Dune")))
+        {
+            float var3 = MathHelper.cos(par1 * (float)Math.PI * 2.0F) * 2.0F + 0.5F;
+
+            if (var3 < 0.0F)
+            {
+                var3 = 0.0F;
+            }
+
+            if (var3 > 1.0F)
+            {
+                var3 = 1.0F;
+            }
+
+            float var4 = 0.7529412F;
+            float var5 = 0.84705883F;
+            float var6 = 1.0F;
+            var4 *= var3 * 0.94F + 0.06F;
+            var5 *= var3 * 0.94F + 0.06F;
+            var6 *= var3 * 0.91F + 0.09F;
+            return this.worldObj.getWorldVec3Pool().getVecFromPool((double)var4, (double)var5, (double)var6);
+        }
+        else
+        {
+            return this.worldObj.getWorldVec3Pool().getVecFromPool(5.095F, .607F, .5F);
+        }
     }
 
     /**

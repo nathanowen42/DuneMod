@@ -54,6 +54,7 @@ public class ComponentVillageWellDune extends ComponentVillageDune
 
             this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 3, 0);
         }
+
         this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 0, 1, 4, 12, 4, Block.cobblestone.blockID, Block.waterMoving.blockID, false);
         this.placeBlockAtCurrentPosition(par1World, 0, 0, 2, 12, 2, par3StructureBoundingBox);
         this.placeBlockAtCurrentPosition(par1World, 0, 0, 3, 12, 2, par3StructureBoundingBox);
@@ -80,9 +81,9 @@ public class ComponentVillageWellDune extends ComponentVillageDune
                 }
             }
         }
-        //new DuneWorldGenFlattener().generate(par1World, rand, boundingBox.getCenterX(), boundingBox.getCenterZ(), 0);
-       // new DuneWorldGenPillerTester().generate(par1World, rand, boundingBox.getCenterX(), boundingBox.getCenterZ(), 0);
 
+        //new DuneWorldGenFlattener().generate(par1World, rand, boundingBox.getCenterX(), boundingBox.getCenterZ(), 0);
+        // new DuneWorldGenPillerTester().generate(par1World, rand, boundingBox.getCenterX(), boundingBox.getCenterZ(), 0);
         return true;
     }
 }

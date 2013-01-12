@@ -44,6 +44,7 @@ public class RegionFileCache
     /**
      * clears region file references
      */
+
     public static synchronized void clearRegionFileReferences()
     {
         Iterator var0 = regionsByFilename.values().iterator();

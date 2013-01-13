@@ -9,15 +9,17 @@ public class mod_DuneMod extends BaseMod
     public static final BiomeGenBase dune = (new BiomeGenDune(23)).setColor(0xfa9418).setBiomeName("dune");
 
     public static final Block blockStaticSand = new BlockStaticSand(200, Material.sand);
-
+    public static final Block blockDuneSupport = new BlockDuneSupport(201).setHardness(5.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep);
+    	
     public static final Item itemStaticProbe = new ItemStaticProbe(5000).setItemName("Static Probe");
     public static final Item itemBinoculars = new ItemBinoculars(5001).setItemName("Binoculars");
+    public static final Item itemDuneSupport = new ItemReed(5002, blockDuneSupport).setItemName("Dune Support");
     
 	GuiBinoculars guiBin = new GuiBinoculars();
     public static boolean drawBinocularHUD = false;
 	
     public mod_DuneMod()
-    {
+    { 
     }
 
     private MapAlwaysGenVillage villageGenerator;
@@ -43,7 +45,13 @@ public class mod_DuneMod extends BaseMod
         ModLoader.addName(itemBinoculars, "Binoculars"); // Add static probe name
         itemBinoculars.setCreativeTab(CreativeTabs.tabTools); // Add static probe to creative menu
         
-        
+        RenderDuneSupport render = new RenderDuneSupport();
+		
+        ModLoader.registerBlock(blockDuneSupport);
+		ModLoader.registerTileEntity(TileEntityDuneSupport.class, "TileEntityDuneSupport", render);
+
+		ModLoader.addName(itemDuneSupport, "Dune Supports");
+		itemDuneSupport.setCreativeTab(CreativeTabs.tabMisc);
         
     }
     public void generateSurface(World world, Random rand, int i, int j)

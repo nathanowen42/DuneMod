@@ -50,7 +50,7 @@ public class mod_DuneMod extends BaseMod
         ModLoader.registerBlock(blockDuneSupport);
 		ModLoader.registerTileEntity(TileEntityDuneSupport.class, "TileEntityDuneSupport", render);
 
-		ModLoader.addName(itemDuneSupport, "Dune Supports");
+		ModLoader.addName(itemDuneSupport, "Sand Brace");
 		itemDuneSupport.setCreativeTab(CreativeTabs.tabMisc);
         
     }

@@ -74,11 +74,14 @@ public class DuneChunkProvider implements IChunkProvider
      */
     float[] parabolicField;
     int[][] field_73219_j = new int[32][32];
-
+    
+    long seed = 0;
+    
     public DuneChunkProvider(World par1World, long par2, boolean par4)
     {
         this.worldObj = par1World;
         this.mapFeaturesEnabled = par4;
+        seed = par2;
         this.rand = new Random(par2);
         this.noiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
         this.noiseGen2 = new NoiseGeneratorOctaves(this.rand, 16);
@@ -105,6 +108,9 @@ public class DuneChunkProvider implements IChunkProvider
                 {
                     int x = (par1 * 16) + j;
                     int y = (par2 * 16) + k;
+                    //Math.round(Math.sin(x * 0.05 - Math.sin(y * .02) * 5) * Math.sin(x * .05) * 8 + 100)
+                    //Math.sin(x * 0.2 + (Math.cos((y) * 0.2 + (Math.sin(x * 0.2)* 0.1))* 0.4))  * 2.2 + 80
+                    //RidgedMultifractalNoise.AddRidgedMultifractalNoise2D(x, y, 2, 0.4f, 0.5f, 0.08f, 25f, 0.9f, (int) seed) * 2 + 80
                     double height = Math.round(Math.sin(x * 0.05 - Math.sin(y * .02) * 5) * Math.sin(x * .05) * 8 + 100);
                     int i1 = 0;
 
